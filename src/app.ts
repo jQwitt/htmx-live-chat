@@ -2,14 +2,17 @@ import Koa from 'koa';
 import Router from 'koa-router';
 import logger from 'koa-logger';
 import json from 'koa-json';
+import serve from 'koa-static';
+
+import path from 'path';
 
 import { HelloWorld } from './components/hello-world';
 
 const app = new Koa();
 const router = new Router();
 
-router.get('/', async (ctx, next) => {
-    ctx.body = HelloWorld();
+router.get('/hello', async (ctx, next) => {
+    ctx.body = HelloWorld;
 
     await next();
 });
@@ -17,6 +20,8 @@ router.get('/', async (ctx, next) => {
 app.use(json());
 app.use(logger());
 app.use(router.routes()).use(router.allowedMethods());
+
+app.use(serve(path.join(__dirname, '/public')));
 
 app.listen(3000, () => {
     console.log('server started!');
