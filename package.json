@@ -5,15 +5,19 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "pnpm prettier --write . && pnpm eslint .",
+        "lint": "npx prisma format && pnpm prettier --write . && pnpm eslint .",
         "dev": "nodemon -w",
         "tw:build": "postcss ./src/styles/tailwind.css -o ./src/public/styles.css",
         "tw:watch": "postcss ./src/styles/tailwind.css -w -o ./src/public/styles.css"
+    },
+    "prisma": {
+        "seed": "ts-node ./prisma/seed.ts"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@prisma/client": "5.0.0",
         "@types/koa-mount": "^4.0.2",
         "koa": "^2.14.2",
         "koa-bodyparser": "^4.4.1",
@@ -40,6 +44,7 @@
         "postcss": "^8.4.27",
         "postcss-cli": "^10.1.0",
         "prettier": "^3.0.0",
+        "prisma": "^5.0.0",
         "tailwindcss": "^3.3.3",
         "ts-node": "^10.9.1",
         "typescript": "^5.1.6"

@@ -1,8 +1,13 @@
 import Router from 'koa-router';
-import { HelloWorld } from '../../components/hello-world';
+import { Hello } from '../../components/hello';
+import * as db from '../db';
 
-export function useContentEndpoints(router: Router): void {
+export async function useContentEndpoints(router: Router) {
+    const prisma = db.get();
+
+    const user = await prisma?.user.findFirst();
+
     router.get('/content/hello', async (ctx) => {
-        ctx.body = HelloWorld();
+        ctx.body = Hello({ name: user?.name });
     });
 }
