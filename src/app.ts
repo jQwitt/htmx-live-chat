@@ -6,16 +6,12 @@ import serve from 'koa-static';
 
 import path from 'path';
 
-import { HelloWorld } from './components/hello-world';
+import { useContentEndpoints } from './server/routes/content';
 
 const app = new Koa();
 const router = new Router();
 
-router.get('/hello', async (ctx, next) => {
-    ctx.body = HelloWorld;
-
-    await next();
-});
+useContentEndpoints(router);
 
 app.use(json());
 app.use(logger());
