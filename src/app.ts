@@ -3,11 +3,13 @@ import Router from 'koa-router';
 import logger from 'koa-logger';
 import json from 'koa-json';
 
+import { HelloWorld } from './components/hello-world';
+
 const app = new Koa();
 const router = new Router();
 
 router.get('/', async (ctx, next) => {
-    ctx.body = '<h1>hello world!</h1>';
+    ctx.body = HelloWorld();
 
     await next();
 });

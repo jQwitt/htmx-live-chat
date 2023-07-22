@@ -2,6 +2,9 @@ lockfileVersion: 5.4
 
 specifiers:
   '@types/koa': ^2.13.6
+  '@types/koa-json': ^2.0.20
+  '@types/koa-logger': ^3.1.2
+  '@types/koa-router': ^7.4.4
   '@types/node': ^20.4.3
   '@typescript-eslint/eslint-plugin': ^6.1.0
   '@typescript-eslint/parser': ^6.1.0
@@ -15,6 +18,7 @@ specifiers:
   nodemon: ^3.0.1
   prettier: ^3.0.0
   ts-node: ^10.9.1
+  typed-html: ^3.0.1
   typescript: ^5.1.6
 
 dependencies:
@@ -23,9 +27,13 @@ dependencies:
   koa-json: 2.0.2
   koa-logger: 3.2.1
   koa-router: 12.0.0
+  typed-html: 3.0.1
 
 devDependencies:
   '@types/koa': 2.13.6
+  '@types/koa-json': 2.0.20
+  '@types/koa-logger': 3.1.2
+  '@types/koa-router': 7.4.4
   '@types/node': 20.4.3
   '@typescript-eslint/eslint-plugin': 6.1.0_ddwllfjrppzgeb7ohd2ng4d3za
   '@typescript-eslint/parser': 6.1.0_ko3fmmbeyij36muomfgt2u76xu
@@ -228,6 +236,24 @@ packages:
 
   /@types/koa-compose/3.2.5:
     resolution: {integrity: sha512-B8nG/OoE1ORZqCkBVsup/AKcvjdgoHnfi4pZMn5UwAPCbhk/96xyv284eBYW8JlQbQ7zDmnpFr68I/40mFoIBQ==}
+    dependencies:
+      '@types/koa': 2.13.6
+    dev: true
+
+  /@types/koa-json/2.0.20:
+    resolution: {integrity: sha512-RuQ1Vlpsm/EC5wo2oWCgNnwneixnSQ9aHQAE7nwnbSiCibgfUO2wwSQN6rn8SfF97cRdN9hKAtoc9KSIuiGP6Q==}
+    dependencies:
+      '@types/koa': 2.13.6
+    dev: true
+
+  /@types/koa-logger/3.1.2:
+    resolution: {integrity: sha512-sioTA1xlKYiIgryANWPRHBkG3XGbWftw9slWADUPC+qvPIY/yRLSrhvX7zkJwMrntub5dPO0GuAoyGGf0yitfQ==}
+    dependencies:
+      '@types/koa': 2.13.6
+    dev: true
+
+  /@types/koa-router/7.4.4:
+    resolution: {integrity: sha512-3dHlZ6CkhgcWeF6wafEUvyyqjWYfKmev3vy1PtOmr0mBc3wpXPU5E8fBBd4YQo5bRpHPfmwC5yDaX7s4jhIN6A==}
     dependencies:
       '@types/koa': 2.13.6
     dev: true
@@ -1739,6 +1765,11 @@ packages:
     dependencies:
       media-typer: 0.3.0
       mime-types: 2.1.35
+    dev: false
+
+  /typed-html/3.0.1:
+    resolution: {integrity: sha512-JKCM9zTfPDuPqQqdGZBWSEiItShliKkBFg5c6yOR8zth43v763XkAzTWaOlVqc0Y6p9ee8AaAbipGfUnCsYZUA==}
+    engines: {node: '>=12'}
     dev: false
 
   /typescript/5.1.6:
