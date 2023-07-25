@@ -8,13 +8,17 @@ import { getChatWithID } from '../helpers';
 import { FormsRoutes } from '../server/routes/forms.routes';
 
 interface ChatListViewProps {
+    name: string;
     chats: Chat[];
 }
 
-export const ChatListView: Component<ChatListViewProps> = ({ chats = [] }) => (
+export const ChatListView: Component<ChatListViewProps> = ({
+    name,
+    chats = [],
+}) => (
     <section class="p-2">
         <div class="flex flex-row justify-between">
-            <p>username</p>
+            <p>logged in as: {name}</p>
             <button
                 hx-get={FormsRoutes.FORMS_CREATE_CHAT}
                 hx-target="#root"

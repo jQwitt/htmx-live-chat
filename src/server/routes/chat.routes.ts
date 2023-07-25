@@ -53,7 +53,7 @@ export async function withChat(router: Router) {
         });
 
         if (user?.chats) {
-            ctx.body = ChatListView({ chats: user?.chats });
+            ctx.body = ChatListView({ name: user?.name, chats: user?.chats });
         }
     });
 
