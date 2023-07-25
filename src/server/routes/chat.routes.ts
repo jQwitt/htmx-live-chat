@@ -1,10 +1,17 @@
 import Router from 'koa-router';
 
-import { ChatView, ChatList } from '../../views';
+import { ChatView, ChatListView } from '../../views';
 import * as db from '../db';
 
+export enum ChatRoutes {
+    CHAT_ID = '/chat/:id',
+    CHAT = '/chat',
+}
+
+const CURRENT_USER = 'b8c67f0d-51c8-461a-a22f-8649dbce7541'; // TODO
+
 export async function withChat(router: Router) {
-    router.get('/chat/:id', async (ctx) => {
+    router.get(ChatRoutes.CHAT_ID, async (ctx) => {
         const { id } = ctx.params;
 
         const prisma = db.get();
@@ -19,11 +26,26 @@ export async function withChat(router: Router) {
         }
     });
 
-    router.get('/chat', async (ctx) => {
+    router.delete(ChatRoutes.CHAT_ID, async (ctx) => {
+        const { id } = ctx.params;
+
+        const prisma = db.get();
+        const chat = await prisma.chat.delete({
+            where: {
+                id,
+            },
+        });
+
+        if (chat) {
+            ctx.body = '';
+        }
+    });
+
+    router.get(ChatRoutes.CHAT, async (ctx) => {
         const prisma = db.get();
         const user = await prisma.user.findFirst({
             where: {
-                id: 'b8c67f0d-51c8-461a-a22f-8649dbce7541',
+                id: CURRENT_USER,
             },
             include: {
                 chats: true,
@@ -31,7 +53,30 @@ export async function withChat(router: Router) {
         });
 
         if (user?.chats) {
-            ctx.body = ChatList({ chats: user?.chats });
+            ctx.body = ChatListView({ chats: user?.chats });
+        }
+    });
+
+    router.post(ChatRoutes.CHAT, async (ctx) => {
+        const { title, description } = ctx.request.body;
+
+        if (title) {
+            const prisma = db.get();
+            const chat = await prisma.chat.create({
+                data: {
+                    title,
+                    description,
+                    participants: {
+                        connect: {
+                            id: CURRENT_USER,
+                        },
+                    },
+                },
+            });
+
+            if (chat) {
+                ctx.body = ChatView({ chat });
+            }
         }
     });
 }
