@@ -6,15 +6,12 @@ import logger from 'koa-logger';
 import json from 'koa-json';
 import serve from 'koa-static';
 
-import { useContentEndpoints } from './server/routes/content';
-import * as db from './server/db';
+import { withChat } from './server/routes/chat.routes';
 
 const app = new Koa();
 const router = new Router();
 
-db.init();
-
-useContentEndpoints(router);
+withChat(router);
 
 app.use(json());
 app.use(logger());

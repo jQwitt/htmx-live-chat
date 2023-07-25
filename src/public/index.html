@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="bg-background text-text">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,8 +13,11 @@
         ></script>
     </head>
     <body>
-        <h1>Static</h1>
-
-        <div hx-get="/content/hello" hx-trigger="load"></div>
+        <div
+            id="root"
+            hx-get="/chat"
+            hx-trigger="load"
+            hx-swap="innerHTML"
+        ></div>
     </body>
 </html>
