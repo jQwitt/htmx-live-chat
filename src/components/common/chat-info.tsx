@@ -2,19 +2,17 @@
 import * as elements from 'typed-html';
 import { Chat } from '@prisma/client';
 
-import { Attributes, Component } from '../../types';
+import { Component } from '../../types';
+import { getChatWithID } from '../../helpers';
 
 interface ChatInfoProps {
     chat: Chat;
+    redirect: boolean;
 }
 
-export const ChatInfo: Component<ChatInfoProps> = ({ chat }) => {
+export const ChatInfo: Component<ChatInfoProps> = ({ chat, redirect }) => {
     const { id, title, description } = chat;
-    const attrs: Attributes = {
-        'hx-get': `/chat/${id}`,
-        'hx-target': '#root',
-        'hx-swap': `innerHTML`,
-    };
+    const attrs = redirect ? getChatWithID(id) : {};
 
     return (
         <div class="flex flex-row items-center gap-2" {...attrs}>

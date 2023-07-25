@@ -16,6 +16,7 @@ export const Header: Component = () => (
                     title: 'Test',
                     description: 'A client side test',
                 },
+                redirect: false,
             })}
         </div>
         <button>settings</button>

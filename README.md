@@ -23,3 +23,4 @@ nvm use && pnpm dev
 #### Resources
 
 [Sharing a database connection in Node](https://itnext.io/how-to-share-a-single-database-connection-in-a-node-js-express-js-app-fcad4cbcb1e)
+[User Avatars - Cecile L. Parker (Dribble)](https://dribbble.com/shots/5401553-User-avatars-Sketch-file)

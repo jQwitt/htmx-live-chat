@@ -14,7 +14,7 @@ export const ChatList: Component<ChatListProps> = ({ chats = [] }) => (
         <p>username</p>
         <h3>Chats:</h3>
         <div class="flex flex-col gap-1">
-            {chats.map((chat) => ChatInfo({ chat }))}
+            {chats.map((chat) => ChatInfo({ chat, redirect: true }))}
         </div>
     </section>
 );
