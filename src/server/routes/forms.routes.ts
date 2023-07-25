@@ -2,8 +2,6 @@ import Router from 'koa-router';
 
 import { CreateChatForm } from '../../forms/create-chat';
 
-// import * as db from '../db';
-
 export enum FormsRoutes {
     FORMS_CREATE_CHAT = '/forms/create-chat',
 }

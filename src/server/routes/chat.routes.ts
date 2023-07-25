@@ -4,11 +4,11 @@ import { ChatView, ChatListView } from '../../views';
 import * as db from '../db';
 
 export enum ChatRoutes {
-    CHAT_ID = '/chat/:id',
+    CHAT_ID = '/chat/:id', // TODO: find way to parameterize
     CHAT = '/chat',
 }
 
-const CURRENT_USER = 'b8c67f0d-51c8-461a-a22f-8649dbce7541'; // TODO
+export const CURRENT_USER = 'b8c67f0d-51c8-461a-a22f-8649dbce7541'; // TODO: migrate to global control
 
 export async function withChat(router: Router) {
     router.get(ChatRoutes.CHAT_ID, async (ctx) => {

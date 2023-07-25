@@ -9,11 +9,13 @@ import serve from 'koa-static';
 
 import { withChat } from './server/routes/chat.routes';
 import { withForms } from './server/routes/forms.routes';
+import { withMessages } from './server/routes/messages.routes';
 
 const app = new Koa();
 const router = new Router();
 
 withChat(router);
+withMessages(router);
 withForms(router);
 
 app.use(json());

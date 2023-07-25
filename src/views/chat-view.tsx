@@ -13,6 +13,6 @@ export const ChatView: Component<ChatProps> = ({ chat }) => (
     <section class="min-h-screen flex flex-col justify-between">
         {Header({ chat })}
         ... messages go here ...
-        {Footer({})}
+        {Footer({ chatId: chat.id })}
     </section>
 );
