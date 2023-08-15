@@ -27,7 +27,7 @@ export const ChatListView: Component<ChatListViewProps> = ({
                 create
             </button>
         </div>
-        <h3>Chats:</h3>
+        <h3 class="font-bold">Chats:</h3>
         <div class="flex flex-col gap-1">
             {chats.map((chat, i) => {
                 const targetId = `chat-info-${i}`;

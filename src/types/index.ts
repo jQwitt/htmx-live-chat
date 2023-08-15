@@ -7,3 +7,5 @@ export type HTMXAttributes = {
 };
 
 export type Attributes = object & HTMXAttributes;
+
+export type SessionJWT = { token: string };

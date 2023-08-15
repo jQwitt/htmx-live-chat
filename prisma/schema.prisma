@@ -25,6 +25,7 @@ model Chat {
 }
 
 model Session {
+  id      Int      @id @default(autoincrement())
   token   String
   expires DateTime @default(now())
 

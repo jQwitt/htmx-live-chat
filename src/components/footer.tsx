@@ -2,13 +2,12 @@
 import * as elements from 'typed-html';
 
 import { Component } from '../types';
-import { CURRENT_USER } from '../server/routes/chat.routes';
 interface FooterProps {
     chatId: string;
 }
 
 export const Footer: Component<FooterProps> = ({ chatId }) => {
-    const path = `/messages/${chatId}/${CURRENT_USER}`;
+    const path = `/messages/${chatId}`;
 
     return (
         <section>

@@ -3,12 +3,12 @@ import Router from 'koa-router';
 import { ChatView, ChatListView } from '../../views';
 import * as db from '../db';
 
+import { requireActiveSession } from '../middleware';
+
 export enum ChatRoutes {
     CHAT_ID = '/chat/:id', // TODO: find way to parameterize
-    CHAT = '/chat',
+    CHATS = '/chats',
 }
-
-export const CURRENT_USER = 'b8c67f0d-51c8-461a-a22f-8649dbce7541'; // TODO: migrate to global control
 
 export async function withChat(router: Router) {
     router.get(ChatRoutes.CHAT_ID, async (ctx) => {
@@ -41,23 +41,29 @@ export async function withChat(router: Router) {
         }
     });
 
-    router.get(ChatRoutes.CHAT, async (ctx) => {
+    router.get(ChatRoutes.CHATS, requireActiveSession, async (ctx) => {
+        const { currentUser } = ctx.state;
         const prisma = db.get();
-        const user = await prisma.user.findFirst({
+        const userAndChats = await prisma.user.findFirstOrThrow({
             where: {
-                id: CURRENT_USER,
+                id: currentUser,
             },
-            include: {
+            select: {
+                name: true,
                 chats: true,
             },
         });
-
-        if (user?.chats) {
-            ctx.body = ChatListView({ name: user?.name, chats: user?.chats });
+        if (!userAndChats) {
+            ctx.body = 'error: no user exists for the active session';
+            return;
         }
+
+        const { name, chats } = userAndChats!;
+        ctx.body = ChatListView({ name, chats });
+        console.log(ctx.status);
     });
 
-    router.post(ChatRoutes.CHAT, async (ctx) => {
+    router.post(ChatRoutes.CHATS, async (ctx) => {
         const { title, description } = ctx.request.body;
 
         if (title) {
@@ -68,7 +74,7 @@ export async function withChat(router: Router) {
                     description,
                     participants: {
                         connect: {
-                            id: CURRENT_USER,
+                            id: '1',
                         },
                     },
                 },

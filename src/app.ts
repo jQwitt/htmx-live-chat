@@ -7,21 +7,21 @@ import json from 'koa-json';
 import body from 'koa-body';
 import serve from 'koa-static';
 
-import { withChat } from './server/routes/chat.routes';
-import { withForms } from './server/routes/forms.routes';
-import { withMessages } from './server/routes/messages.routes';
+import { withAuth, withChat, withForms, withMessages } from './server/routes';
 
 const app = new Koa();
 const router = new Router();
 
+app.use(json());
+app.use(logger());
+app.use(body());
+
+withAuth(router);
 withChat(router);
 withMessages(router);
 withForms(router);
 
-app.use(json());
-app.use(logger());
-app.use(body());
-app.use(router.routes()).use(router.allowedMethods());
+app.use(router.routes());
 
 app.use(serve(path.join(__dirname, '/public')));
 
