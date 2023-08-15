@@ -12,10 +12,12 @@ async function main() {
             participants: true,
         },
     });
+
     await prisma.user.create({
         data: {
             name: 'Jack',
-            avatar: 'null',
+            password:
+                '$2y$10$9kV5VkarGvKlaEFQ0dGwm.zb5s.di.ehl.yKOsSG4Tw6OCpvX3HxO% ', // taken from commandline
             chats: {
                 create: [
                     {
