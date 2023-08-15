@@ -2,7 +2,7 @@
 import * as elements from 'typed-html';
 import { Chat } from '@prisma/client';
 
-import { Component } from '../../types';
+import { Component } from '../../../types';
 
 interface ChatInfoProps {
     chat: Chat;

@@ -1,6 +1,6 @@
 import Router from 'koa-router';
 
-import { CreateChatForm, LoginForm, RegisterForm } from '../../forms';
+import { CreateChatForm, LoginForm, RegisterForm } from '../../client/forms';
 
 export enum FormsRoutes {
     FORMS_CREATE_CHAT = '/forms/create-chat',

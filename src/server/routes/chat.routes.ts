@@ -1,6 +1,6 @@
 import Router from 'koa-router';
 
-import { ChatView, ChatListView } from '../../views';
+import { ChatView, ChatListView } from '../../client/views';
 import * as db from '../db';
 
 import { requireActiveSession } from '../middleware';

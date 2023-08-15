@@ -1,7 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import * as elements from 'typed-html';
 
-import { Component } from '../types';
+import { Component } from '../../types';
 
 export enum AUTH_ROUTES {
     REGISTER = '/register',

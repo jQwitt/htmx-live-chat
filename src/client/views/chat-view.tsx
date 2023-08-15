@@ -3,7 +3,7 @@ import * as elements from 'typed-html';
 import { Chat } from '@prisma/client';
 
 import { Header, Footer } from '../components';
-import { Component } from '../types';
+import { Component } from '../../types';
 
 interface ChatProps {
     chat: Chat;

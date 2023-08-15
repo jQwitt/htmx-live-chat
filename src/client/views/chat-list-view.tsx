@@ -3,9 +3,9 @@ import * as elements from 'typed-html';
 import { Chat } from '@prisma/client';
 
 import { ChatInfo } from '../components';
-import { Component } from '../types';
+import { Component } from '../../types';
 import { getChatWithID } from '../helpers';
-import { FormsRoutes } from '../server/routes/forms.routes';
+import { FormsRoutes } from '../../server/routes/forms.routes';
 
 interface ChatListViewProps {
     name: string;

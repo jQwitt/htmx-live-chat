@@ -7,8 +7,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "npx prisma format && pnpm prettier --write . && pnpm eslint .",
         "dev": "nodemon -w",
-        "tw:build": "postcss ./src/styles/tailwind.css -o ./src/public/styles.css",
-        "tw:watch": "postcss ./src/styles/tailwind.css -w -o ./src/public/styles.css",
+        "tw:build": "postcss ./src/client/styles/tailwind.css -o ./src/public/styles.css",
+        "tw:watch": "postcss ./src/client/styles/tailwind.css -w -o ./src/public/styles.css",
         "prisma:seed": "npx prisma db seed"
     },
     "prisma": {
